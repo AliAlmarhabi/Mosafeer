@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.T.D.Project" android:installLocation="auto">
+  <!--suppress UsesMinSdkAttributes-->
+  <uses-sdk android:minSdkVersion="21" />
+  <uses-permission android:name="android.permission.CALL_PHONE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-feature android:name="android.hardware.camera" android:required="false" />
+  <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+  <application android:label="مسافر" android:icon="@drawable/splashicon" android:name="md5b18a19f4ce09f9e17f1c4d20b14aa588.MainApplication" android:allowBackup="true">
+    <activity android:configChanges="orientation|screenSize" android:label="T.D.Project" android:screenOrientation="portrait" android:theme="@style/MainTheme" android:name="md5b18a19f4ce09f9e17f1c4d20b14aa588.MainActivity" />
+    <activity android:configChanges="orientation|screenSize" android:noHistory="true" android:theme="@style/splashScren.Splash" android:name="md5b18a19f4ce09f9e17f1c4d20b14aa588.splashScreen">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <receiver android:enabled="true" android:label="Connectivity Plugin Broadcast Receiver" android:name="md592d74be4bac08a7af63848ae15d2f86e.ConnectivityChangeBroadcastReceiver" />
+    <activity android:configChanges="orientation|screenSize" android:name="md5dff1bed22da39876f271fd39214b8f60.MediaPickerActivity" />
+    <activity android:name="md511f2fcf685a3847eee0baf2c814b548d.MediaPickerActivity" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.T.D.Project.mono.MonoRuntimeProvider.__mono_init__" />
+    <meta-data android:name="android.support.VERSION" android:value="25.4.0" />
+  </application>
+</manifest>

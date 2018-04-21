@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="T.D.Project.View.Regesteration"
+             xmlns:local="clr-namespace:T.D.Project.Models;assembly=T.D.Project"
+             xmlns:customPicker="clr-namespace:T.D.Project.View.CustomRenders"
+             xmlns:localViewClass="clr-namespace:T.D.Project.View;assembly=T.D.Project"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:controlsImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title="تسجيل" Icon="register.png">
+
+    <!--set the top padding for platforms-->
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 20, 0, 0" />
+            <On Platform="Android" Value="0, 0, 0, 0" />
+            <On Platform="UWP" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <!--set shared Resources to accrss all objects-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <TextAlignment x:Key="lblAlignment">Center</TextAlignment>
+            <Color x:Key="txtColor">Black</Color>
+            <local:Validation x:Key="dataHasBeenEntered"/>
+            <!--image styling-->
+            <Style x:Key="imgStyling" TargetType="controlsImage:CircleImage">
+                <Setter Property="HeightRequest" Value="110"/>
+                <Setter Property="WidthRequest" Value="110"/>
+                <Setter Property="Source" Value="user.png"/>
+            </Style>
+
+            <!--Button Styleing-->
+            <Style x:Key="btnStyling" TargetType="Button">
+                <Setter Property="Text" Value="تسجيل"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#8c8c8c"/>
+                <Setter Property="IsEnabled" Value="False"/>
+            </Style>
+            
+            <!--Entry Styling-->
+            <Style x:Key="EnteryStyling" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="HorizontalTextAlignment" Value="End"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            
+            <Style x:Key="StackLayoutGridStyling" TargetType="StackLayout">
+                <Setter Property="IsVisible" Value="False"/>
+            </Style>
+            <!--Apply style for checkBox controls-->
+            <Style  TargetType="controls:CheckBox">
+                <Setter Property="FontSize" Value="13"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0,10,0,0">
+                <Label Text="إضافة مشترك جديد" HorizontalTextAlignment="{StaticResource lblAlignment}"/>
+                <Entry x:Name="txtFname"  Style="{StaticResource EnteryStyling}" Placeholder="الاسم الاول"  TextColor="{StaticResource Key=txtColor}" />
+                <Entry x:Name="txtLname" Style="{StaticResource EnteryStyling}"  Placeholder="اسم العائلة" TextColor="{StaticResource Key=txtColor}"/>
+                <Entry x:Name="txtPhone" Style="{StaticResource EnteryStyling}"  Placeholder="رقم الجوال"  TextColor="{StaticResource Key=txtColor}"
+                   Keyboard="Numeric">
+                    <!--set the length to 10 for phone entry object-->
+                    <Entry.Behaviors>
+                        <local:Validation MaxLength="10">
+                        </local:Validation>
+                    </Entry.Behaviors>
+                </Entry>
+                <customPicker:ControlsRenders x:Name="pickCity" Title="المدينة" 
+                                              SelectedIndexChanged="pickCity_SelectedIndexChanged">
+                </customPicker:ControlsRenders>
+
+                <customPicker:ControlsRenders x:Name="pickCar" 
+                                              Title="نوع السيارة">
+                </customPicker:ControlsRenders>
+                
+                <customPicker:ControlsRenders x:Name="pickYear" 
+                                              Title="الموديل">
+                </customPicker:ControlsRenders>
+                
+                <Entry x:Name="txtCarSeat" Placeholder="عدد الركاب" 
+                       TextColor="{StaticResource Key=txtColor}" 
+                       Style="{StaticResource EnteryStyling}"
+                       IsEnabled="False" />
+                <Stepper x:Name="stpSeat" Increment="1" Maximum="6" Minimum="0" Value="0"
+                     HorizontalOptions="CenterAndExpand"
+                     ValueChanged="stpSeat_ValueChanged"></Stepper>
+                <controlsImage:CircleImage x:Name="imgProfile" Style="{StaticResource imgStyling}"></controlsImage:CircleImage>
+                <!--Select destinations-->
+                <StackLayout x:Name="StackLayoutGrid" Style="{StaticResource StackLayoutGridStyling}">
+                    <Label x:Name="lblDestination" 
+                           Text="الرجاء اختيار المدن التي تقوم بتوصيل الراكب اليها:"
+                           HorizontalTextAlignment="End">
+                    </Label>
+                    <Grid BackgroundColor="Transparent" IsVisible="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                            <controls:CheckBox x:Name="checkBox1"  Grid.Row="0" Grid.Column="0"/>
+                            <controls:CheckBox x:Name="checkBox2"  Grid.Row="0" Grid.Column="1" />
+                            <controls:CheckBox x:Name="checkBox3"  Grid.Row="0" Grid.Column="2" />
+
+                            <controls:CheckBox x:Name="checkBox4" Grid.Row="1" Grid.Column="0"/>
+                            <controls:CheckBox x:Name="checkBox5"  Grid.Row="1" Grid.Column="1"/>
+                            <controls:CheckBox x:Name="checkBox6"  Grid.Row="1" Grid.Column="2"/>
+
+                            <controls:CheckBox x:Name="checkBox7"  Grid.Row="2" Grid.Column="0"/>
+                            <controls:CheckBox x:Name="checkBox8"  Grid.Row="2" Grid.Column="1" />
+                            <controls:CheckBox x:Name="checkBox9"  Grid.Row="2" Grid.Column="2" />
+                    </Grid>
+                </StackLayout>
+
+                <Button  x:Name="btnRegster" Style="{StaticResource btnStyling}" Clicked="btnRegster_Clicked">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference txtFname},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference txtLname},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference txtPhone},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference txtCarSeat},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Label x:Name="lblMsg" Text=".الرجاء تعبئة البيانات السابفة" 
+                   TextColor="Red" IsVisible="False" HorizontalTextAlignment="{StaticResource lblAlignment}"/>
+                <Label x:Name="destinationCity" IsVisible="False"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

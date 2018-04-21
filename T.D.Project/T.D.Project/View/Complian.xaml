@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="T.D.Project.View.Complian">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="styleEntery" TargetType="Entry">
+            <Setter Property="HorizontalTextAlignment" Value="End"/>
+            </Style>
+
+            <Style x:Key="editor" TargetType="Editor">
+                <Setter Property="Keyboard" Value="Text"/>
+                <Setter Property="HeightRequest" Value="200"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="WidthRequest" Value="500"/>
+            </Style>
+
+            <Style x:Key="lblstyling" TargetType="Label">
+                <Setter Property="IsVisible" Value="False"/>
+                <Setter Property="TextColor" Value="Green"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:SegmentControl x:Name="SegmenSugestion" SelectedSegment="1" TintColor="#ecb913" SelectedSegmentChanged="SegmenSugestion_SelectedSegmentChanged">
+            </controls:SegmentControl>
+            <Entry x:Name="entryName" Placeholder="الاسم"  Style="{StaticResource styleEntery}"/>
+
+            <Entry x:Name="entryPhone" Placeholder="رقم الجوال" Keyboard="Telephone" Style="{StaticResource styleEntery}"/>
+
+            <Editor x:Name="Comment"  Style="{StaticResource editor}" Text="ملاحظات"/>
+
+            <Button x:Name="btnSend" Text="ارسال" Clicked="btnSend_Clicked"/>
+
+            <Label x:Name="txtMessage" Style="{StaticResource lblstyling}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

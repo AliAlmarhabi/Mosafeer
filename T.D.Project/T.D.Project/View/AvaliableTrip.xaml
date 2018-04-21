@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="T.D.Project.View.AvaliableTrip"
+             xmlns:controlsImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:local="clr-namespace:T.D.Project;assembly=T.D.Project">
+
+    <ContentPage.Content>
+        <ListView x:Name="DriverInfo" HasUnevenRows="true" RowHeight="100" IsPullToRefreshEnabled="True" SeparatorVisibility="Default" SeparatorColor="Black" ItemSelected="DriverInfo_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                            <Grid RowSpacing="4" ColumnSpacing="0" Padding="0,3,3,3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image  Source="call.png"  HeightRequest="30" 
+                                       WidthRequest="30" IsVisible="True" 
+                                       HorizontalOptions="Start" 
+                                        Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"/>
+
+                                <Label x:Name="lblFname" Grid.Row="0" Grid.Column="1"
+                                        HorizontalTextAlignment="End" FontSize="13" 
+                                        TextColor="Black" />
+
+                                <Label x:Name="lblName" Grid.Row="0" Grid.Column="2" FontSize="Medium"
+                                        HorizontalTextAlignment="End" TextColor="Black" Text="{Binding DriverName}"/>
+
+                                <Label x:Name="lblCity" Grid.Row="1" Grid.Column="1" FontSize="11"
+                                        HorizontalTextAlignment="End" TextColor="Black"
+                                        Text="{Binding  Destination,StringFormat='الى:{0}' }"/>
+                                
+                                <Label x:Name="lblPhone" Grid.Row="1" Grid.Column="2" FontSize="11"
+                                        HorizontalTextAlignment="End" TextColor="Black" 
+                                        Text="{Binding DriverCar,StringFormat='النوع:{0}'}"/>
+
+                                <Label x:Name="lblSeat" Grid.Row="2" Grid.Column="1" FontSize="11"
+                                        HorizontalTextAlignment="End" TextColor="Black" 
+                                       Text="{Binding DriverCarSize,StringFormat='العدد:{0}'}"
+                                        />
+                                
+                                <Label x:Name="lblcarType" Grid.Row="2" Grid.Column="2" FontSize="11"
+                                        HorizontalTextAlignment="End" TextColor="Black" 
+                                       Text="{Binding DriverCarYear,StringFormat='الموديل:{0}'}"/>
+                                
+                                <StackLayout  Orientation="Horizontal" Grid.Row="0" Grid.Column="3" Grid.RowSpan="3">
+                                    <controlsImage:CircleImage Source="{Binding imgProfile}" WidthRequest="55" HeightRequest="60"  HorizontalOptions="EndAndExpand" Aspect="AspectFill"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

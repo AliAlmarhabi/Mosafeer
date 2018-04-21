@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="T.D.Project.View.AboutUs">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lblHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="#8c8c8c"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+            <Label Text="عن مسافر" Style="{StaticResource lblHeader}"/>
+            <Editor Text="منصة الكترونية تعمل على تقديم خدمة السفر بالسيارة بسهولة وامان." IsEnabled="False" TextColor="Black"/>
+            <Label Text="الهدف من مسافر" Style="{StaticResource lblHeader}"/>
+            <Editor Text="تقديم خدمة سريعة في عالم السفر عن طريق البر وكذلك يتيح للجميع المشاركة كامقدم للخدمة او مستفيد." IsEnabled="False"/>
+            <Label Text=" كيفية استخدام الخدمة" Style="{StaticResource lblHeader}"/>
+            <Editor Text="مقدم الخدمة:
+يتطلب علية تسجيل بيانات الاتصال عن طريق ايقونة تسجيل .
+" IsEnabled="False"/>
+
+            <Editor Text="المستفيد:
+ علية القيام بعملية البحث في عن طريق ايقونة الصفحة الرئيسية ثم القيام بعملية الاتصال على احد المقدمين للخدمة.
+
+" IsEnabled="False"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

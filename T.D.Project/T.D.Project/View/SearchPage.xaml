@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="T.D.Project.View.SearchPage"
+             xmlns:customPicker="clr-namespace:T.D.Project.View.CustomRenders;assembly=T.D.Project"
+             BackgroundColor="White" 
+             Title="الصفحة الرئيسية" Icon="home.png">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android, WinPhone, Windows" Value="2,0,2,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lblTextColor" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#8c8c8c"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="45"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="Stacksearchable" VerticalOptions="CenterAndExpand" 
+                     Spacing="25">
+
+            <Label Text="احجز رحلتك"  
+                   HorizontalTextAlignment="Center"
+                   Style="{StaticResource lblTextColor}"/>
+
+            <customPicker:ControlsRenders
+                x:Name="pickerFrom"
+                HeightRequest="40" 
+                Title="من" 
+                BackgroundColor="#ecb913"
+                >
+            </customPicker:ControlsRenders>
+
+            <customPicker:ControlsRenders x:Name="pickerTo" 
+                                          HeightRequest="40" 
+                                          Title="الى" 
+                                          BackgroundColor="#ecb913">
+            </customPicker:ControlsRenders>
+
+            <Button x:Name="btnSearch" 
+                    Text="بحث"
+                    Clicked="btnSearch_Clicked"
+                    Style="{StaticResource buttonStyle}"
+                    />
+            <ActivityIndicator x:Name="loading" Color="Gray" HeightRequest="50" WidthRequest="50"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
